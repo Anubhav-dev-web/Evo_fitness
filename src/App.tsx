@@ -1,11 +1,11 @@
 import Navbar from "@/scenes/navbar";
 import Home from "@/scenes/home";
+import OurClasses from "@/scenes/OurClasses";
+import Benefits from "@/scenes/benefits";
+import ContactUs from "@/scenes/contactUs";
+import Footer from "@/scenes/footer";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/Shared/types";
-import Benefits from "@/scenes/benefits";
-import OurClasses from "@/scenes/OurClasses";
-import ContactUs from "./scenes/contactUs";
-import Footer from "./scenes/footer";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -19,9 +19,7 @@ function App() {
         setIsTopOfPage(true);
         setSelectedPage(SelectedPage.Home);
       }
-      if (window.scrollY != 0) {
-        setIsTopOfPage(true);
-      }
+      if (window.scrollY !== 0) setIsTopOfPage(false);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
