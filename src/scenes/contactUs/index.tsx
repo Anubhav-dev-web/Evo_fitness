@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { SelectedPage } from "@/Shared/types";
 import { motion } from "framer-motion";
-import ContactUsPageGraphic from "@/assets/ContactUsPageGraphic.png";
+import ContactUsPageGraphic from "@/Assets/ContactUsPageGraphic.png";
 import HText from "@/Shared/HText";
 import { toast } from "react-hot-toast";
 
