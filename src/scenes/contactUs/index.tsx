@@ -3,6 +3,7 @@ import { SelectedPage } from "@/Shared/types";
 import { motion } from "framer-motion";
 import ContactUsPageGraphic from "@/assets/ContactUsPageGraphic.png";
 import HText from "@/Shared/HText";
+import { toast } from "react-hot-toast";
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -14,13 +15,21 @@ const ContactUs = ({ setSelectedPage }: Props) => {
 
   const {
     register,
-
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
-    alert("Thank you for contacting us! We will get back to you shortly.");
+    toast("Thank you for contacting us, we will get back to you shortly", {
+      icon: "📮",
+      style: {
+        borderRadius: "10px",
+        background: "#FF6B66",
+        color: "#fff",
+      },
+    });
+    reset();
   };
 
   return (
@@ -65,6 +74,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
           >
             <form onSubmit={onSubmit}>
               <input
+                required={true}
                 className={inputStyles}
                 type="text"
                 placeholder="NAME"
@@ -82,6 +92,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               )}
 
               <input
+                required={true}
                 className={inputStyles}
                 type="text"
                 placeholder="EMAIL"
@@ -101,6 +112,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               <textarea
                 className={inputStyles}
                 placeholder="MESSAGE"
+                required={true}
                 rows={4}
                 cols={50}
                 {...register("message", {
